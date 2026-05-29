@@ -114,7 +114,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.tianji.aigc.AIGCApplication</mainClass>
+                    <mainClass>com.tianji.AIGCApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
