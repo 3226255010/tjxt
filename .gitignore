@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+﻿# Created by .ignore support plugin (hsz.mobi)
 ### Example user template template
 ### Example user template
 
@@ -17,3 +17,24 @@ logs
 job
 
 templates
+
+# ===== 由 Codex 添加 =====
+
+# 个人简历（不上传）
+??-???.md
+简历-周正.md
+
+# openclaw 插件目录（不上传）
+openclaw/
+
+# API Key / 本地配置文件（不上传）
+**/application-local.yml
+**/bootstrap-local.yml
+*.key
+*.secret
+*.pem
+*.env
+.env*
+
+# 敏感配置（不上传）
+**/nacos*.yml
