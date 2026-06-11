@@ -1,12 +1,14 @@
 package com.tianji.aigc.controller;
 
+import com.tianji.aigc.domain.vo.ChatSessionVO;
+import com.tianji.aigc.domain.vo.MessageVO;
 import com.tianji.aigc.service.ChatSessionService;
 import com.tianji.aigc.domain.vo.SessionVO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/session")
@@ -21,6 +23,55 @@ public class SessionController {
     @PostMapping
     public SessionVO createSession(@RequestParam(value = "n", defaultValue = "3") Integer num) {
         return this.chatSessionService.createSession(num);
+    }
+
+
+    /**
+     * 热门问题
+     * @param num
+     * @return
+     */
+    @GetMapping("/hot")
+    public List<SessionVO.Example> hotExamples(@RequestParam(value = "n", defaultValue = "3") Integer num){
+        return this.chatSessionService.hotExamples(num);
+    }
+
+
+    /**
+     * 查询单个历史对话详情
+     *
+     * @return 对话记录列表
+     */
+    @GetMapping("/{sessionId}")
+    public List<MessageVO> queryBySessionId(@PathVariable("sessionId") String sessionId) {
+        return this.chatSessionService.queryBySessionId(sessionId);
+    }
+
+    /**
+     * 查询历史对话列表
+     *
+     * @return 会话列表
+     */
+    @GetMapping("/history")
+    public Map<String,List<ChatSessionVO>> queryHistorySessions(){
+        return this.chatSessionService.queryHistorySessions();
+    }
+
+    /**
+     * 删除历史会话列表
+     */
+    @DeleteMapping("/history")
+    public void deleteHistorySession(@RequestParam("sessionId") String sessionId) {
+        this.chatSessionService.deleteHistorySession(sessionId);
+    }
+
+    /**
+     * 修改历史会话列表标题
+     */
+    @PutMapping("/history")
+    public void updateHistorySessionTitle(@RequestParam("sessionId") String sessionId,
+                                     @RequestParam("title") String title) {
+        this.chatSessionService.updateHistorySessionTitle(sessionId, title);
     }
 
 }
