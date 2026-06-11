@@ -29,5 +29,5 @@ tj:
         stateless: false # 无状态
   promotion:
     aes:
-      key: tjxt-test-key-in
-      iv: tjxt-test-ivinit
+      key: ${TJ_PROMOTION_AES_KEY}
+      iv: ${TJ_PROMOTION_AES_IV}

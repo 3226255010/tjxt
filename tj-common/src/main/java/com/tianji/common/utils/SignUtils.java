@@ -162,8 +162,8 @@ public class SignUtils {
 
 
     public static void main(String[] args) {
-        String accessKey = "123";
-        String secreatKey = "456";
+        String accessKey = System.getenv("TJ_SIGN_ACCESS_KEY") != null ? System.getenv("TJ_SIGN_ACCESS_KEY") : "123";
+        String secreatKey = System.getenv("TJ_SIGN_SECRET_KEY") != null ? System.getenv("TJ_SIGN_SECRET_KEY") : "456";
         String urlPath = "/pay/123456789";
         String method = "GET";
         String params = "";
